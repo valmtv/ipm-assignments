@@ -119,7 +119,10 @@ function App() {
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
         <div className="neomorph-flat mx-2 my-2 rounded-[1.25rem] px-4 py-3 sm:mx-4 sm:my-4 sm:px-8 sm:py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-foreground sm:text-2xl">Capsumi</h1>
+            <div className="flex items-center gap-3">
+              <img src="public/logo/capsumi-logo-color.PNG" alt="Capsumi Logo" className="h-10 w-10 rounded-full" />
+              <h1 className="text-xl font-bold text-foreground sm:text-2xl">Capsumi</h1>
+            </div>
 
             <ul className="hidden items-center gap-4 md:flex lg:gap-8">
               <li>
