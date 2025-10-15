@@ -11,6 +11,7 @@ interface ModalContent {
   title: string
   description: string
   authors?: { name: string; pdfUrl: string }[]
+  pdfUrl?: string
 }
 
 function App() {
@@ -26,10 +27,10 @@ function App() {
       description:
         "This is a placeholder description for Assignment 1. It covers the fundamental concepts and initial research phase of the Capsumi project.",
       authors: [
-        { name: "Name Surname", pdfUrl: "/assignments/author1.pdf" },
-        { name: "Name Surname", pdfUrl: "/assignments/author2.pdf" },
-        { name: "Name Surname", pdfUrl: "/assignments/author3.pdf" },
-        { name: "Name Surname", pdfUrl: "/assignments/author4.pdf" },
+        { name: "Author 1", pdfUrl: "/assignments/assignment1-author1.pdf" },
+        { name: "Author 2", pdfUrl: "/assignments/assignment1-author2.pdf" },
+        { name: "Author 3", pdfUrl: "/assignments/assignment1-author3.pdf" },
+        { name: "Author 4", pdfUrl: "/assignments/assignment1-author4.pdf" },
       ],
     },
     {
@@ -38,12 +39,60 @@ function App() {
       description:
         "This is a placeholder description for Assignment 2. It focuses on the implementation details and technical specifications of the project.",
       authors: [
-        { name: "Name Surname", pdfUrl: "/assignments/author1.pdf" },
-        { name: "Name Surname", pdfUrl: "/assignments/author2.pdf" },
-        { name: "Name Surname", pdfUrl: "/assignments/author3.pdf" },
-        { name: "Name Surname", pdfUrl: "/assignments/author4.pdf" },
+        { name: "Author 1", pdfUrl: "/assignments/assignment2-author1.pdf" },
+        { name: "Author 2", pdfUrl: "/assignments/assignment2-author2.pdf" },
+        { name: "Author 3", pdfUrl: "/assignments/assignment2-author3.pdf" },
+        { name: "Author 4", pdfUrl: "/assignments/assignment2-author4.pdf" },
       ],
     },
+  ]
+
+  const projectStages = [
+    {
+      id: 1,
+      title: "Progress Milestone 1",
+      description: "Elaborate the project proposal and set up the project web site. Describe the problem you will try to solve during the project. Shortly, characterize the target user population. Describe the main goal of the project and a possible solution to the problem. Identifying possible similar applications.",
+      pdfUrl: "/project-stages/stage1.pdf"
+    },
+    {
+      id: 2,
+      title: "Progress Milestone 2",
+      description: "Identification and characterization of the target users, tasks and scenarios. In this stage, it is intended to examine and understand the problem space. Who are the main users of the system? What tasks users want to perform with the system? What functionalities should be made available by the system? How is the work environment?",
+      pdfUrl: "/project-stages/stage2.pdf"
+    },
+    {
+      id: 3,
+      title: "Progress Milestone 3",
+      description: "This is a placeholder description for project progress milestone 3. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.",
+      pdfUrl: undefined
+    }
+  ]
+
+  const uiStages = [
+    {
+      id: 1,
+      title: "UI Development 1",
+      description: "This is a placeholder for UI development milestone 1. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.",
+      pdfUrl: undefined
+    },
+    {
+      id: 2,
+      title: "UI Development 2",
+      description: "This is a placeholder for UI development milestone 2. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.",
+      pdfUrl: undefined
+    },
+    {
+      id: 3,
+      title: "UI Development 3",
+      description: "This is a placeholder for UI development milestone 3. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.",
+      pdfUrl: undefined
+    },
+    {
+      id: 4,
+      title: "UI Development 4",
+      description: "This is a placeholder for UI development milestone 4. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.",
+      pdfUrl: undefined
+    }
   ]
 
   const openModal = (content: ModalContent) => {
@@ -236,19 +285,20 @@ function App() {
             Project Progress
           </h2>
           <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-            {[1, 2, 3].map((item) => (
+            {projectStages.map((item) => (
               <button
-                key={item}
+                key={item.id}
                 onClick={() =>
                   openModal({
-                    title: `Progress Milestone ${item}`,
-                    description: `This is a placeholder for project progress milestone ${item}. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.`,
+                    title: item.title,
+                    description: item.description,
+                    pdfUrl: item.pdfUrl
                   })
                 }
                 className="neomorph group rounded-[1.25rem] p-6 text-left transition-all hover:neomorph-pressed active:neomorph-inset sm:p-8"
               >
                 <h3 className="text-lg font-bold text-foreground group-hover:text-accent sm:text-xl">
-                  Milestone {item}
+                  Milestone {item.id}
                 </h3>
                 <p className="mt-3 text-sm text-muted-foreground sm:mt-4 sm:text-base">View progress details</p>
               </button>
@@ -263,19 +313,20 @@ function App() {
             UI Development Progress
           </h2>
           <div className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-            {[1, 2, 3, 4].map((item) => (
+            {uiStages.map((item) => (
               <button
-                key={item}
+                key={item.id}
                 onClick={() =>
                   openModal({
-                    title: `UI Development ${item}`,
-                    description: `This is a placeholder for UI development milestone ${item}. Here you would find detailed information about the achievements, challenges, and next steps for this phase of the Capsumi project.`,
+                    title: item.title,
+                    description: item.description,
+                    pdfUrl: item.pdfUrl
                   })
                 }
                 className="neomorph group rounded-[1.25rem] p-6 text-left transition-all hover:neomorph-pressed active:neomorph-inset sm:p-8"
               >
                 <h3 className="text-lg font-bold text-foreground group-hover:text-accent sm:text-xl">
-                  Milestone {item}
+                  Milestone {item.id}
                 </h3>
                 <p className="mt-3 text-sm text-muted-foreground sm:mt-4 sm:text-base">View progress details</p>
               </button>
@@ -313,6 +364,8 @@ function App() {
                     <li key={index}>
                       <a
                         href={author.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block text-sm font-semibold text-foreground transition-colors hover:text-accent sm:text-base"
                       >
                         {author.name}
@@ -320,6 +373,18 @@ function App() {
                     </li>
                   ))}
                 </ul>
+              </div>
+            )}
+            {modalContent.pdfUrl && (
+              <div className="mt-6 sm:mt-8">
+                <a
+                  href={modalContent.pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm font-semibold text-foreground transition-colors hover:text-accent sm:text-base"
+                >
+                  View Report
+                </a>
               </div>
             )}
           </div>
